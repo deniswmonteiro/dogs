@@ -1,5 +1,6 @@
 import React from "react";
 
+/** Form types */
 const types = {
     email: {
         regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -11,6 +12,7 @@ const useForm = (type) => {
     const [value, setValue] = React.useState("");
     const [error, setError] = React.useState(null);
 
+    /** Validate fields */
     function validate(value) {
         if (type === false) return true;
         
@@ -30,6 +32,7 @@ const useForm = (type) => {
         }
     }
 
+    /** When field value changed */
     function onChange({target}) {
         if (error) validate(target.value);
 

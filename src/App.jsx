@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { UserStorage } from "./UserContext";
 import Header from "./Components/Header";
 import Home from "./Components/Home";
 import Login from "./Components/Login/Login";
@@ -10,14 +11,16 @@ const App = () => {
     return (
         <div>
             <BrowserRouter>
-                <Header />
+                <UserStorage>
+                    <Header />
 
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login/*" element={<Login />} />
-                </Routes>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/login/*" element={<Login />} />
+                    </Routes>
 
-                <Footer />
+                    <Footer />
+                </UserStorage>
             </BrowserRouter>
         </div>
     )

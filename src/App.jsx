@@ -6,7 +6,7 @@ import Login from "./Components/Login/Login";
 import Footer from "./Components/Footer";
 import "./App.css";
 
-function App() {
+const App = () => {
     return (
         <div>
             <BrowserRouter>
@@ -14,7 +14,7 @@ function App() {
 
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/login/*" element={<Login />} />
                 </Routes>
 
                 <Footer />

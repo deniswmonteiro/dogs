@@ -11,7 +11,7 @@ export const UserStorage = ({children}) => {
     const [error, setError] = React.useState(null);
     const navigate = useNavigate();
 
-    /** Remove user data and log out */
+    // /** Remove user data and log out */
     const userLogout = React.useCallback(async function () {
         setData(null);
         setError(null),
@@ -97,10 +97,10 @@ export const UserStorage = ({children}) => {
         }
 
         autoLogin();
-    }, [userLogout]);
+    }, []);
 
     return (
-        <UserContext.Provider value={{userLogin, userLogout, data, login, loading, error}}>
+        <UserContext.Provider value={{userLogin, data, login, userLogout, loading, error}}>
             {children}
         </UserContext.Provider>
     )

@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import useForm from "../../Hooks/useForm";
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
+import Error from "../Helper/Error";
+import styles from "./LoginForm.module.css";
+import stylesBtn from "../Forms/Button.module.css";
 
 const LoginForm = () => {
     const username = useForm();
@@ -21,10 +24,11 @@ const LoginForm = () => {
     }
 
     return (
-        <section>
-            <h1>Login</h1>
+        <section className="animeLeft">
+            {/* Login */}
+            <h1 className="title">Login</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 {/* Username */}
                 <Input label="Usuário" type="text"
                     id="username"
@@ -43,12 +47,24 @@ const LoginForm = () => {
                     )
                 }
 
-                {error && <p>{error}</p>}
+                <Error error={error} />
             </form>
 
-            <Link to="/login/cadastrar">
-                Cadastro
+            <Link to="/login/perdeu" className={styles.lost}>
+                Perdeu a senha?
             </Link>
+
+            {/* Register */}
+            <div className={styles.register}>
+                <h2 className={styles.subtitle}>
+                    Cadastre-se
+                </h2>
+                <p>Ainda não possui conta? Cadastre-se no site.</p>
+                
+                <Link to="/login/cadastrar" className={stylesBtn.button}>
+                    Cadastro
+                </Link>
+            </div>
         </section>
     )
 }

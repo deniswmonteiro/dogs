@@ -37,7 +37,7 @@ export const UserStorage = ({children}) => {
             
             const response = await fetch(url, options);
 
-            if (!response.ok) throw new Error("Usuário inválido.");
+            if (!response.ok) throw new Error("Credenciais inválidas.");
 
             const {token} = await response.json();
 

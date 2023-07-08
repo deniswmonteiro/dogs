@@ -16,10 +16,12 @@ const UserPhotoPost = () => {
     const {data, error, loading, request} = useFetch();
     const navigate = useNavigate();
 
+    /** Navigate to user personal page when a new post is created */
     React.useEffect(() => {
         if (data) navigate("/conta");
     }, [data, navigate]);
 
+    /** When a image is added */
     function handleImgChange({target}) {
         setImg({
             preview: URL.createObjectURL(target.files[0]),
@@ -27,6 +29,7 @@ const UserPhotoPost = () => {
         });
     }
 
+    /** Handle form submit */
     async function handleSubmit(event) {
         event.preventDefault();
 
@@ -64,6 +67,7 @@ const UserPhotoPost = () => {
                     id="age"
                     {...age} />
 
+                {/* Image */}
                 <input type="file" className={styles.img}
                     id="img"
                     name="img"
@@ -80,6 +84,7 @@ const UserPhotoPost = () => {
                 <Error error={error} />
             </form>
             
+            {/* Image preview */}
             <div>
                 {img.preview &&
                     <div className={styles.preview}

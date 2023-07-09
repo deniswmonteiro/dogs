@@ -1,10 +1,13 @@
 import React from "react";
-import styles from "./PhotoContent.module.css";
+import { UserContext } from "../../UserContext";
 import { Link } from "react-router-dom";
+import PhotoDelete from "./PhotoDelete";
 import PhotoComments from "./PhotoComments";
+import styles from "./PhotoContent.module.css";
 
 const PhotoContent = ({data}) => {
     const {photo, comments} = data;
+    const user = React.useContext(UserContext);
 
     return (
         <div className={styles.photo}>
@@ -14,9 +17,16 @@ const PhotoContent = ({data}) => {
             <div className={styles.details}>
                 <div>
                     <p className={styles.author}>
-                        <Link to={`/perfil/${photo.author}`}>
-                            @{photo.author}
-                        </Link>
+                        {/* Show button to delete photo only if logged user is equal to photo author */}
+                        {user.data && user.data.username === photo.author ?
+                            (
+                                <PhotoDelete id={photo.id} />
+                            ) : (
+                                <Link to={`/perfil/${photo.author}`}>
+                                    @{photo.author}
+                                </Link>
+                            )
+                        }
                         
                         <span className={styles.views}>
                             {photo.views}

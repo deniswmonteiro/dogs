@@ -83,6 +83,18 @@ export function PHOTOS_GET({page, total, user}) {
     }
 }
 
+export function PHOTO_DELETE(id, token) {
+    return {
+        url: `${API_URL}/api/photo/${id}`,
+        options: {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            },
+        }
+    }
+}
+
 export function COMMENT_POST(id, body, token) {
     return {
         url: `${API_URL}/api/comment/${id}`,

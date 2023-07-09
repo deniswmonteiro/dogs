@@ -1,0 +1,74 @@
+.form {
+    padding: 1rem;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 1);
+}
+
+.label {
+    display: block;
+    font-size: 1rem;
+    line-height: 1;
+    margin-bottom: .5rem;
+}
+
+.inputGroup {
+    display: flex;
+}
+
+.textarea {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-family: var(--type-first);
+    resize: none;
+    border: 1px solid #EEE;
+    padding: .5rem;
+    border-radius: .2rem;
+    background-color: #EEE;
+    transition: .2s;
+}
+
+.textarea:hover,
+.textarea:focus {
+    outline: none;
+    border-color: #FB1;
+    background-color: #FFF;
+    box-shadow: 0 0 0 #FEA;
+}
+
+.button {
+    border: none;
+    cursor: pointer;
+    color: #333;
+    background-color: transparent;
+    font-size: 1rem;
+    padding: 0 1rem;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.button:hover,
+.button:focus {
+    outline: none;
+}
+
+.button:hover svg path,
+.button:focus svg path {
+    fill: #FEA;
+    stroke: #FB1;
+    transition: .3s;
+}
+
+.button:hover svg g,
+.button:focus svg g {
+    animation: bark .6s infinite;
+}
+
+@keyframes bark {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

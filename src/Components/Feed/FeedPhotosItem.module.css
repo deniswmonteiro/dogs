@@ -14,7 +14,7 @@
     grid-row: span 2;
 }
 
-.photo img {
+.photo > div {
     grid-area: 1/1;
 }
 

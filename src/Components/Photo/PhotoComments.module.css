@@ -4,6 +4,10 @@
     padding: 1rem 2rem;
 }
 
+.photoSingle.comments {
+    padding: 1rem 0;
+}
+
 .comments li {
     margin-bottom: .5rem;
     line-height: 1.2;

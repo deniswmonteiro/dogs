@@ -5,7 +5,7 @@ import useFetch from "../../Hooks/useFetch";
 import { COMMENT_POST } from "../../api";
 import Error from "../Helper/Error";
 
-const PhotoCommentsForm = ({id, setPhotoComments}) => {
+const PhotoCommentsForm = ({id, setPhotoComments, single}) => {
     const [comment, setComment] = React.useState("");
     const {error, request} = useFetch();
 
@@ -28,7 +28,8 @@ const PhotoCommentsForm = ({id, setPhotoComments}) => {
     }
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={`${styles.form} ${single ? styles.photoSingle : ""}`}
+            onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="comment" className={styles.label}>
                     Adicione um comentário...

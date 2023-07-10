@@ -12,12 +12,27 @@
     animation: scaleUp .3s forwards;
 }
 
+.photoSingle.photo {
+    grid-template-columns: 1fr;
+    height: auto;
+}
+
 .img {
     grid-row: 1/4;
 }
 
+.photoSingle .img {
+    grid-row: 1;
+    border-radius: .4rem;
+    overflow: hidden;
+}
+
 .details {
     padding: 2rem 2rem 0 2rem;
+}
+
+.photoSingle .details {
+    padding: 1rem 0 0 0;
 }
 
 .author {
@@ -39,10 +54,6 @@
     height: 10px;
     margin-right: 5px;
     background: url("../../Assets/visualizacao-black.svg") no-repeat;
-}
-
-.comments {
-    padding: 0 2rem;
 }
 
 .attributes {
@@ -82,6 +93,10 @@
         max-height: calc(100vh - 4rem);
         overflow-y: auto;
         grid-template-columns: minmax(20rem, 40rem);
+    }
+
+    .photoSingle.photo {
+        max-height: 100%;
     }
 
     .img {

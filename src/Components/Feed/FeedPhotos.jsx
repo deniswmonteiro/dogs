@@ -12,7 +12,7 @@ const FeedPhotos = ({page, user, setInfinite, setModalPhoto}) => {
     /** Get all photos */
     React.useEffect(() => {
         async function fetchPhotos() {
-            const total = 3;
+            const total = 6;
             const {url, options} = PHOTOS_GET({
                 page,
                 total,
@@ -21,8 +21,7 @@ const FeedPhotos = ({page, user, setInfinite, setModalPhoto}) => {
 
             const {response, result} = await request(url, options);
 
-            console.log(result.length)
-
+            /** Infinite scroll until result is minor than total */
             if (response && response.ok && result.length < total) {
                 setInfinite(false);
             }

@@ -2,6 +2,7 @@ import React from "react";
 import useForm from "../../Hooks/useForm";
 import useFetch from "../../Hooks/useFetch";
 import { PHOTO_POST } from "../../api";
+import Head from "../Helper/Head";
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
 import Error from "../Helper/Error";
@@ -51,6 +52,8 @@ const UserPhotoPost = () => {
 
     return (
         <section className={`${styles.photoPost} animeLeft`}>
+            <Head title="Adicionar Foto" description="Adicionar novas fotos ao site." />
+
             <form onSubmit={handleSubmit}>
                 {/* Name */}
                 <Input label="Nome" type="text"

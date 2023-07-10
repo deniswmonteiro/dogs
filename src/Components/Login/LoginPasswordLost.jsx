@@ -2,6 +2,7 @@ import React from "react";
 import useForm from "../../Hooks/useForm";
 import useFetch from "../../Hooks/useFetch";
 import { PASSWORD_LOST } from "../../api";
+import Head from "../Helper/Head";
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
 import Error from "../Helper/Error";
@@ -26,6 +27,8 @@ const LoginPasswordLost = () => {
 
     return (
         <section>
+            <Head title="Perdeu a Senha?" description="Enviar link para criação de nova senha por email." />
+
             <h1 className="title">Perdeu a senha?</h1>
             
             {data ?

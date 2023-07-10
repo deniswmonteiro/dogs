@@ -3,6 +3,7 @@ import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
 import useFetch from "../../Hooks/useFetch";
 import { USER_POST } from "../../api";
+import Head from "../Helper/Head";
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
 import Error from "../Helper/Error";
@@ -30,6 +31,8 @@ const LoginCreate = () => {
 
     return (
         <section className={`animeLeft`}>
+            <Head title="Cadastrar-se" description="Fazer cadastro no site." />
+
             <h1 className="title">Cadastre-se</h1>
 
             <form onSubmit={handleSubmit}>

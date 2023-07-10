@@ -5,8 +5,8 @@ import {ReactComponent as MyPhotosIcon} from "../../Assets/feed.svg";
 import {ReactComponent as StatsIcon} from "../../Assets/estatisticas.svg";
 import {ReactComponent as PhotoPostIcon} from "../../Assets/adicionar.svg";
 import {ReactComponent as LogoutIcon} from "../../Assets/sair.svg";
-import styles from "./UserHeaderNav.module.css";
 import useMedia from "../../Hooks/useMedia";
+import styles from "./UserHeaderNav.module.css";
 
 const UserHeaderNav = () => {
     const {userLogout} = React.useContext(UserContext);

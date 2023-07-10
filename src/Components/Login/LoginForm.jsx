@@ -2,6 +2,7 @@ import React from "react";
 import { UserContext } from "../../UserContext";
 import { Link } from "react-router-dom";
 import useForm from "../../Hooks/useForm";
+import Head from "../Helper/Head";
 import Input from "../Forms/Input";
 import Button from "../Forms/Button";
 import Error from "../Helper/Error";
@@ -25,6 +26,8 @@ const LoginForm = () => {
 
     return (
         <section className="animeLeft">
+            <Head title="Login" description="Fazer login no site." />
+
             {/* Login */}
             <h1 className="title">Login</h1>
 

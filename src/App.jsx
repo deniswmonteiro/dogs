@@ -14,25 +14,27 @@ import "./App.css";
 
 const App = () => {
     return (
-        <div>
+        <div className="App">
             <BrowserRouter>
                 <UserStorage>
                     <Header />
 
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="login/*" element={<Login />} />
-                        <Route path="conta/*" 
-                            element={
-                                <ProtectedRoute>
-                                    <User />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route path="foto/:id" element={<Photo />} />
-                        <Route path="perfil/:id" element={<UserProfile />} />
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
+                    <main className="AppBody">
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="login/*" element={<Login />} />
+                            <Route path="conta/*" 
+                                element={
+                                    <ProtectedRoute>
+                                        <User />
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route path="foto/:id" element={<Photo />} />
+                            <Route path="perfil/:id" element={<UserProfile />} />
+                            <Route path="*" element={<NotFound />} />
+                        </Routes>
+                    </main>
 
                     <Footer />
                 </UserStorage>

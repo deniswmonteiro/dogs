@@ -46,6 +46,16 @@ a {
     color: #333;
 }
 
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh + 10rem);
+}
+
+.AppBody {
+    flex: 1;
+}
+
 .container {
     max-width: 50rem;
     padding: 0 1rem;
@@ -54,6 +64,7 @@ a {
 
 .mainContainer {
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .title {

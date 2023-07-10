@@ -5,7 +5,7 @@ import Loading from "./Helper/Loading";
 const Home = () => {
     return (
         <section className="container mainContainer">
-            <Feed user={0} />
+            <Feed />
         </section>
     )
 }

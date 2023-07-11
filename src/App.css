@@ -101,3 +101,8 @@ a {
         transform: initial;
     }
 }
+
+/** VICTORY **/
+.VictoryContainer {
+    height: initial !important;
+}

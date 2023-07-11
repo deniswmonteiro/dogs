@@ -102,4 +102,12 @@
     .img {
         grid-row: 1;
     }
+
+    .details {
+        padding: 1rem 1rem 0 1rem;
+    }
+
+    .attributes {
+        font-size: 1rem;
+    }
 }

@@ -12,3 +12,10 @@
     margin-bottom: .5rem;
     line-height: 1.2;
 }
+
+@media (max-width: 40rem) {
+    .comments {
+        overflow-y: initial;
+        padding: 1rem;
+    }
+}

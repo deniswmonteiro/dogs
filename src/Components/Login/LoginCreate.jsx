@@ -1,6 +1,7 @@
 import React from "react";
 import useForm from "../../Hooks/useForm";
 import { UserContext } from "../../UserContext";
+import { useNavigate } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import { USER_POST } from "../../api";
 import Head from "../Helper/Head";
@@ -14,19 +15,30 @@ const LoginCreate = () => {
     const password = useForm("password");
     const {userLogin} = React.useContext(UserContext);
     const {loading, error, request} = useFetch();
+    const navigate = useNavigate();
 
+    /** Return to login page */
+    function handleClickReturn(event) {
+        event.preventDefault();
+
+        navigate("/login");
+    }
+
+    /** Send new user data and create a user */
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const {url, options} = USER_POST({
-            username: username.value,
-            email: email.value,
-            password: password.value
-        });
+        if (username.validate() && email.validate() && password.validate()) {
+            const {url, options} = USER_POST({
+                username: username.value,
+                email: email.value,
+                password: password.value
+            });
 
-        const {response} = await request(url, options);
+            const {response} = await request(url, options);
 
-        if (response.ok) userLogin(username.value, password.value);
+            if (response.ok) userLogin(username.value, password.value);
+        }
     }
 
     return (
@@ -51,15 +63,21 @@ const LoginCreate = () => {
                     id="password"
                     {...password} />
                 
-                {loading ? 
-                    (
-                        <Button disabled>Cadastrando...</Button>
-                    ) : (
-                        <Button>Cadastrar</Button>
-                    )
-                }
+                <div className="buttonGroup">
+                    {loading ?
+                        (
+                            <Button disabled>Enviando...</Button>
+                        ) : (
+                            <Button behavior="btnConfirm">Enviar</Button>
+                        )
+                    }
 
-                <Error error={error} />
+                    <Button behavior="btnCancel" onClick={handleClickReturn}>
+                        Voltar
+                    </Button>
+                </div>
+
+                {error && <Error error={error} />}
             </form>
         </section>
     )

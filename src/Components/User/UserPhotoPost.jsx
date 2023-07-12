@@ -24,29 +24,35 @@ const UserPhotoPost = () => {
 
     /** When a image is added */
     function handleImgChange({target}) {
-        setImg({
-            preview: URL.createObjectURL(target.files[0]),
-            raw: target.files[0],
-        });
+        if (target.files.length > 0) {
+            setImg({
+                preview: URL.createObjectURL(target.files[0]),
+                raw: target.files[0],
+            });
+        }
+
+        else setImg({});
     }
 
     /** Handle form submit */
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const formData = new FormData();
-        
-        formData.append("img", img.raw);
-        formData.append("name", name.value);
-        formData.append("weight", weight.value);
-        formData.append("age", age.value);
+        if (name.validate() && weight.validate() && age.validate() && Object.keys(img).length > 0) {
+            const formData = new FormData();
+            
+            formData.append("img", img.raw);
+            formData.append("name", name.value);
+            formData.append("weight", weight.value);
+            formData.append("age", age.value);
 
-        const token = window.localStorage.getItem("token");
+            const token = window.localStorage.getItem("token");
 
-        if (token) {
-            const {url, options} = PHOTO_POST(formData, token);
+            if (token) {
+                const {url, options} = PHOTO_POST(formData, token);
 
-            request(url, options);
+                await request(url, options);
+            }
         }
     }
 
@@ -71,10 +77,12 @@ const UserPhotoPost = () => {
                     {...age} />
 
                 {/* Image */}
-                <input type="file" className={styles.img}
-                    id="img"
-                    name="img"
-                    onChange={handleImgChange} />
+                <div style={{marginBottom: "1.25rem"}}>
+                    <input type="file" className={styles.img}
+                        id="img"
+                        name="img"
+                        onChange={handleImgChange} />
+                </div>
 
                 {loading ?
                     (
@@ -84,15 +92,16 @@ const UserPhotoPost = () => {
                     )
                 }
 
-                <Error error={error} />
+                {error && <Error error={error} />}
             </form>
             
             {/* Image preview */}
-            <div>
-                {img.preview &&
+            {img.preview &&
+                <div>
                     <div className={styles.preview}
-                        style={{backgroundImage: `url(${img.preview})`}}></div>}
-            </div>
+                        style={{backgroundImage: `url(${img.preview})`}}></div>
+                </div>
+            }
         </section>
     )
 }

@@ -1,17 +1,32 @@
 import React from "react";
-import {UserContext} from "../../UserContext";
+import useFetch from "../../Hooks/useFetch";
+import { UserContext } from "../../UserContext";
+import { TOKEN_VALIDATE_POST } from "../../api";
 import PhotoCommentsForm from "./PhotoCommentsForm";
 import styles from "./PhotoComments.module.css";
 
 const PhotoComments = ({id, comments, single}) => {
     const [photoComments, setPhotoComments] = React.useState(() => comments);
-    const {login} = React.useContext(UserContext);
+    const {request} = useFetch();
     const commentsSection = React.useRef(null);
+    const {login, userLogout} = React.useContext(UserContext);
 
-    /** Go to the last comment */
     React.useEffect(() => {
+        // Log out user if token is invalid
+        async function validateToken(token) {
+            const {url, options} = TOKEN_VALIDATE_POST(token);
+            const {response} = await request(url, options);
+
+            if (!response.ok) userLogout();
+        }
+
+        const token = window.localStorage.getItem("token");
+
+        if (token) validateToken(token);
+
+        // Go to the last comment
         commentsSection.current.scrollTop = commentsSection.current.scrollHeight;
-    }, [photoComments])
+    }, [photoComments]);
 
     return (
         <>

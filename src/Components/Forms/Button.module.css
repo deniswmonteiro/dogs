@@ -11,6 +11,11 @@
     transition: .3s;
 }
 
+.button.buttonCancel {
+    background-color: #F31;
+    color: #EEE;
+}
+
 .button:hover,
 .button:focus {
     outline: none;
@@ -18,7 +23,21 @@
     transition: .3s;
 }
 
+.button.buttonCancel:hover,
+.button.buttonCancel:focus {
+    box-shadow: 0 0 0 3px #FAB, 0 0 0 4px #F31;
+    transition: .3s;
+}
+
 .button:disabled {
     opacity: .5;
     cursor: wait;
+}
+
+@media (max-width: 40rem) {
+    .button {
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+    }
 }

@@ -13,9 +13,13 @@
     line-height: 1.2;
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 64rem) {
     .comments {
         overflow-y: initial;
         padding: 1rem;
+    }
+
+    .photoSingle.comments {
+        overflow-y: auto;
     }
 }

@@ -4,10 +4,12 @@ import { PHOTOS_GET } from "../../api";
 import FeedPhotosItem from "./FeedPhotosItem";
 import Error from "../Helper/Error.jsx";
 import Loading from "../Helper/Loading.jsx";
+import PropTypes from "prop-types";
 import styles from "./FeedPhotos.module.css";
 
 const FeedPhotos = ({page, user, setInfinite, setModalPhoto}) => {
     const {data, loading, error, request} = useFetch();
+    const [hasPages, setHasPages] = React.useState(true);
 
     /** Get all photos */
     React.useEffect(() => {
@@ -24,6 +26,7 @@ const FeedPhotos = ({page, user, setInfinite, setModalPhoto}) => {
             /** Infinite scroll until result is minor than total */
             if (response && response.ok && result.length < total) {
                 setInfinite(false);
+                setHasPages(false);
             }
         }
 
@@ -36,17 +39,37 @@ const FeedPhotos = ({page, user, setInfinite, setModalPhoto}) => {
 
     if (data) {
         return (
-            <ul className={`${styles.feed} animeLeft`}>
-                {data.map((photo) => (
-                    <FeedPhotosItem key={photo.id}
-                        photo={photo}
-                        setModalPhoto={setModalPhoto} />
-                ))}
-            </ul>
+            <>
+                <ul className={`${styles.feed} animeLeft`}>
+                    {data.map((photo) => (
+                        <FeedPhotosItem key={photo.id}
+                            photo={photo}
+                            setModalPhoto={setModalPhoto} />
+                    ))}
+                </ul>
+
+                {!hasPages &&
+                    <p style={{textAlign: "center", padding: "3rem 0px", color: "rgb(136, 136, 136)"}}>
+                        Não existem mais postagens.
+                    </p>
+                }
+            </>
         )
     }
 
     else return null;
+}
+
+FeedPhotos.defaultProps = {
+    page: 1,
+    user: 0,
+}
+
+FeedPhotos.propTypes = {
+    page: PropTypes.number.isRequired,
+    user: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.number.isRequired]),
+    setInfinite: PropTypes.func.isRequired,
+    setModalPhoto: PropTypes.func.isRequired,
 }
 
 export default FeedPhotos

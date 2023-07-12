@@ -4,19 +4,26 @@ import { PHOTO_GET } from "../../api";
 import Error from "../Helper/Error";
 import Loading from "../Helper/Loading";
 import PhotoContent from "../Photo/PhotoContent";
+import PropTypes from "prop-types";
 import styles from "./FeedModal.module.css";
 
 const FeedModal = ({photo, setModalPhoto}) => {
     const {data, error, loading, request} = useFetch();
 
     React.useEffect(() => {
-        const {url, options} = PHOTO_GET(photo.id);
+        /** Get photo and show in modal */
+        async function getPhoto() {
+            const {url, options} = PHOTO_GET(photo.id);
 
-        request(url, options);
+            await request(url, options);
+        }
+
+        getPhoto();
     }, [photo, request]);
 
+    /** Close modal when click outside */
     function handleOutsideClick({target, currentTarget}) {
-        if (target === currentTarget) setModalPhoto(null)
+        if (target === currentTarget) setModalPhoto(null);
     }
 
     return (
@@ -25,9 +32,14 @@ const FeedModal = ({photo, setModalPhoto}) => {
             
             {loading && <Loading />}
 
-            {data && <PhotoContent data={data} />}
+            {data && <PhotoContent data={data} setModalPhoto={setModalPhoto} />}
         </div>
     )
+}
+
+FeedModal.propTypes = {
+    photo: PropTypes.object.isRequired,
+    setModalPhoto: PropTypes.func.isRequired
 }
 
 export default FeedModal

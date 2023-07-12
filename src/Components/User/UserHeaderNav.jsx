@@ -34,7 +34,7 @@ const UserHeaderNav = () => {
             }
             
             <nav className={`${mobile ? styles.navMobile : styles.nav}
-                ${mobileMenu && styles.navMobileActive}`}>
+                ${mobileMenu ? styles.navMobileActive : ""}`}>
                 <NavLink to="/conta" end>
                     <MyPhotosIcon />
                     {mobile && "Minhas Fotos"}

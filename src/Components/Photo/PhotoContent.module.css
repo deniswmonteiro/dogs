@@ -1,18 +1,67 @@
 .photo {
+    position: relative;
     margin: auto;
-    height: 36rem;
     border-radius: .2rem;
     background-color: #FFF;
-    display: grid;
-    grid-template-columns: 36rem 20rem;
-    grid-template-rows: auto 1fr auto;
     overflow: hidden;
     opacity: 0;
     transform: scale(.8);
     animation: scaleUp .3s forwards;
 }
 
-.photoSingle.photo {
+.photoHeader button { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 16px;
+    right: 32px;
+    width: 32px;
+    height: 32px;
+    background-color: #FFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    border: none;
+    border-radius: .4rem;
+    opacity: .7;
+    cursor: pointer;
+    z-index: 2000;
+    transition: .3s;
+}
+
+.photoHeader button::before,
+.photoHeader button::after {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 2px;
+    background-color: #333;
+}
+
+.photoHeader button:before {
+    transform: rotate(45deg);
+}
+
+.photoHeader button:after {
+    transform: rotate(-45deg);
+}
+
+.photoHeader button:hover {
+    opacity: 1;
+    transition: .3s;
+}
+
+.photoSingle .photoHeader {
+    display: none;
+}
+
+.photoBody {
+    display: grid;
+    grid-template-columns: 36rem 20rem;
+    grid-template-rows: auto 1fr auto;
+    height: 36rem;
+}
+
+.photoSingle .photoBody {
     grid-template-columns: 1fr;
     height: auto;
 }
@@ -28,7 +77,7 @@
 }
 
 .details {
-    padding: 2rem 2rem 0 2rem;
+    padding: 5rem 2rem 0 2rem;
 }
 
 .photoSingle .details {
@@ -92,11 +141,18 @@
         height: auto;
         max-height: calc(100vh - 4rem);
         overflow-y: auto;
-        grid-template-columns: minmax(20rem, 40rem);
+    }
+
+    .photoHeader button {
+        right: 22px;
     }
 
     .photoSingle.photo {
         max-height: 100%;
+    }
+
+    .photoBody {
+        grid-template-columns: minmax(20rem, 40rem);
     }
 
     .img {

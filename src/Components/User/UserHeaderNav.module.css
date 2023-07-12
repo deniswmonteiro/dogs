@@ -74,6 +74,14 @@
     cursor: pointer;
 }
 
+.navMobile a:global(.active) {
+    color: #FB1;
+}
+
+.navMobile a:global(.active) svg > * {
+    fill: #FB1;
+}
+
 .navMobile a:hover svg > *,
 .navMobile button:hover svg > * {
     fill: #FB1;

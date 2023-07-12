@@ -25,6 +25,13 @@ const LoginPasswordReset = () => {
         if (login) setLogin(login);
     }, []);
 
+    /** Return to login page */
+    function handleClickReturn(event) {
+        event.preventDefault();
+
+        navigate("/login");
+    }
+
     /** Send new password */
     async function handleSubmit(event) {
         event.preventDefault();
@@ -54,13 +61,19 @@ const LoginPasswordReset = () => {
                     id="password"
                     {...password} />
 
-                {loading ? 
-                    (
-                        <Button disabled>Enviando...</Button>
-                    ) : (
-                        <Button>Enviar</Button>
-                    )
-                }
+                <div className="buttonGroup">
+                    {loading ?
+                        (
+                            <Button disabled>Enviando...</Button>
+                        ) : (
+                            <Button behavior="btnConfirm">Enviar</Button>
+                        )
+                    }
+
+                    <Button behavior="btnCancel" onClick={handleClickReturn}>
+                        Voltar
+                    </Button>
+                </div>
             </form>
 
             {error && <Error error={error} />}

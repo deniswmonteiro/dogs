@@ -70,7 +70,7 @@ a {
 .title {
     font-family: var(--type-second);
     line-height: 1;
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin: 1rem 0;
     position: relative;
     z-index: 1;
@@ -87,6 +87,11 @@ a {
     left: -5px;
     border-radius: .2rem;
     z-index: -1;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 1rem;
 }
 
 .animeLeft {
@@ -110,5 +115,9 @@ a {
 @media (max-width: 40rem) {
     .title {
         font-size: 2rem;
+    }
+
+    .buttonGroup {
+        flex-direction: column;
     }
 }

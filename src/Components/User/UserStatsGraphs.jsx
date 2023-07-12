@@ -1,5 +1,6 @@
 import React from "react";
 import {VictoryPie, VictoryChart, VictoryBar} from "victory";
+import PropTypes from "prop-types";
 import styles from "./UserStatsGraphs.module.css";
 
 const UserStatsGraphs = ({data}) => {
@@ -31,29 +32,37 @@ const UserStatsGraphs = ({data}) => {
             </div>
 
             {/* Graphs */}
-            <div className={styles.graphItem}>
-                <VictoryPie data={graph}
-                    innerRadius={50}
-                    padding={{top: 20, right: 80, bottom: 20, left: 80}}
-                    style={{
-                        data: {
-                            fillOpacity: .9,
-                            stroke: "#FFF",
-                            strokeWidth: 2
-                        },
-                        labels: {
-                            fontSize: 14,
-                            fill: "#333"
-                        }
-                    }} />
-            </div>
-            <div className={styles.graphItem}>
-                <VictoryChart>
-                    <VictoryBar data={graph} alignment="start" />
-                </VictoryChart>
-            </div>
+            {total > 0 &&
+                <>
+                    <div className={styles.graphItem}>
+                        <VictoryPie data={graph}
+                            innerRadius={50}
+                            padding={{top: 20, right: 80, bottom: 20, left: 80}}
+                            style={{
+                                data: {
+                                    fillOpacity: .9,
+                                    stroke: "#FFF",
+                                    strokeWidth: 2
+                                },
+                                labels: {
+                                    fontSize: 14,
+                                    fill: "#333"
+                                }
+                            }} />
+                    </div>
+                    <div className={styles.graphItem}>
+                        <VictoryChart>
+                            <VictoryBar data={graph} alignment="start" />
+                        </VictoryChart>
+                    </div>
+                </>
+            }   
         </section>
     )
+}
+
+UserStatsGraphs.propTypes = {
+    data: PropTypes.array.isRequired,
 }
 
 export default UserStatsGraphs

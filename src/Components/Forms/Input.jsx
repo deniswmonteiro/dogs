@@ -25,7 +25,7 @@ Input.propTypes = {
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func.isRequired,
-    error: PropTypes.string.isRequired,
+    error: PropTypes.string,
 }
 
 export default Input

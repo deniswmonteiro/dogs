@@ -3,6 +3,7 @@ import { UserContext } from "../../UserContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import { TOKEN_VALIDATE_POST } from "../../api";
 import useFetch from "../../Hooks/useFetch";
+import PropTypes from "prop-types";
 
 const ProtectedRoute = ({children}) => {
     const {login, userLogout} = React.useContext(UserContext);
@@ -26,8 +27,14 @@ const ProtectedRoute = ({children}) => {
     }, []);
 
     if (login === true) return children;
+
     else if (login === false) return <Navigate to="/login" />;
+
     else return <></>;
+}
+
+ProtectedRoute.propTypes = {
+    children: PropTypes.object.isRequired,
 }
 
 export default ProtectedRoute

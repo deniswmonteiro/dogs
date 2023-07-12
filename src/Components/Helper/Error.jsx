@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Error = ({error}) => {
     if (!error) return null
@@ -8,6 +9,10 @@ const Error = ({error}) => {
             {error}
         </p>
     )
+}
+
+Error.propTypes = {
+    error: PropTypes.string.isRequired,
 }
 
 export default Error

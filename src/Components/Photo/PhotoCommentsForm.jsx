@@ -1,9 +1,10 @@
 import React from "react";
-import styles from "./PhotoCommentsForm.module.css";
 import {ReactComponent as SendComment} from "../../Assets/enviar.svg";
 import useFetch from "../../Hooks/useFetch";
 import { COMMENT_POST } from "../../api";
 import Error from "../Helper/Error";
+import PropTypes from "prop-types";
+import styles from "./PhotoCommentsForm.module.css";
 
 const PhotoCommentsForm = ({id, setPhotoComments, single}) => {
     const [comment, setComment] = React.useState("");
@@ -49,6 +50,12 @@ const PhotoCommentsForm = ({id, setPhotoComments, single}) => {
             {error && <Error error={error} />}
         </form>
     )
+}
+
+PhotoCommentsForm.propTypes = {
+    id: PropTypes.number.isRequired,
+    setPhotoComments: PropTypes.func.isRequired,
+    single: PropTypes.bool.isRequired,
 }
 
 export default PhotoCommentsForm

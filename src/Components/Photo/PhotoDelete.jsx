@@ -2,6 +2,7 @@ import React from "react";
 import { PHOTO_DELETE } from "../../api";
 import useFetch from "../../Hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import styles from "./PhotoDelete.module.css";
 
 const PhotoDelete = ({id}) => {
@@ -41,6 +42,10 @@ const PhotoDelete = ({id}) => {
             }
         </>
     )
+}
+
+PhotoDelete.propTypes = {
+    id: PropTypes.number.isRequired,
 }
 
 export default PhotoDelete

@@ -3,6 +3,7 @@ import useFetch from "../../Hooks/useFetch";
 import { UserContext } from "../../UserContext";
 import { TOKEN_VALIDATE_POST } from "../../api";
 import PhotoCommentsForm from "./PhotoCommentsForm";
+import PropTypes from "prop-types";
 import styles from "./PhotoComments.module.css";
 
 const PhotoComments = ({id, comments, single}) => {
@@ -43,6 +44,12 @@ const PhotoComments = ({id, comments, single}) => {
             {login && <PhotoCommentsForm id={id} setPhotoComments={setPhotoComments} single={single} />}
         </>
     )
+}
+
+PhotoComments.propTypes = {
+    id: PropTypes.number.isRequired,
+    comments: PropTypes.array,
+    single: PropTypes.bool.isRequired,
 }
 
 export default PhotoComments

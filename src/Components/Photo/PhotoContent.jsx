@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Image from "../Helper/Image";
 import PhotoDelete from "./PhotoDelete";
 import PhotoComments from "./PhotoComments";
+import PropTypes from "prop-types";
 import styles from "./PhotoContent.module.css";
 
 const PhotoContent = ({data, single, setModalPhoto}) => {
@@ -64,6 +65,12 @@ const PhotoContent = ({data, single, setModalPhoto}) => {
             </div>
         </div>
     )
+}
+
+PhotoContent.propTypes = {
+    data: PropTypes.object.isRequired,
+    single: PropTypes.bool.isRequired,
+    setModalPhoto: PropTypes.func.isRequired,
 }
 
 export default PhotoContent

@@ -22,6 +22,7 @@ const useFetch = () => {
 
         catch (e) {
             setError(e.message);
+            setTimeout(() => setError(null), 5000);
             result = null;
         }
 

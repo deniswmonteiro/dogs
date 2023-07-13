@@ -25,7 +25,7 @@ const LoginCreate = () => {
     }
 
     /** Send new user data and create a user */
-    async function handleSubmit(event) {
+    async function submitRegisterForm(event) {
         event.preventDefault();
 
         if (username.validate() && email.validate() && password.validate()) {
@@ -47,7 +47,7 @@ const LoginCreate = () => {
 
             <h1 className="title">Cadastre-se</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={submitRegisterForm}>
                 {/* Username */}
                 <Input label="Usuário" type="text"
                     id="username"

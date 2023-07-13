@@ -11,6 +11,7 @@ const UserProfile = () => {
             <Head title={`@${id}`} description="Página de perfil do usuário." />
 
             <h1 className="title">{id}</h1>
+            
             <Feed user={id} />
         </section>
     )

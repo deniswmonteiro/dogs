@@ -19,8 +19,10 @@ const UserStatsGraphs = ({data}) => {
         setGraph(graphData);
 
         /** Sum total views */
-        setTotal(data.map(({views}) => Number(views))
-            .reduce((acc, curr) => acc + curr, 0));
+        setTotal(
+            data.map(({views}) => Number(views))
+            .reduce((acc, curr) => acc + curr, 0)
+        );
     }, [data]);
 
     return (

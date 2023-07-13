@@ -10,7 +10,7 @@ const PhotoDelete = ({id}) => {
     const navigate = useNavigate()
 
     /** Handle photo delete */
-    async function handleClick() {
+    async function handlePhotoDelete() {
         const confirm = window.confirm("Tem certeza que deseja deletar?");
 
         if (confirm) {
@@ -35,7 +35,7 @@ const PhotoDelete = ({id}) => {
                     </button>
                 ) : (
                     <button className={styles.btnDelete}
-                        onClick={handleClick}>
+                        onClick={handlePhotoDelete}>
                         Deletar
                     </button>
                 )

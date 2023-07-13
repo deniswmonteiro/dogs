@@ -17,8 +17,8 @@ const UserPhotoPost = () => {
     const {data, error, loading, request} = useFetch();
     const navigate = useNavigate();
 
-    /** Navigate to user personal page when a new post is created */
     React.useEffect(() => {
+        /** Navigate to user personal page when a new post is created */
         if (data) navigate("/conta");
     }, [data, navigate]);
 
@@ -35,7 +35,7 @@ const UserPhotoPost = () => {
     }
 
     /** Handle form submit */
-    async function handleSubmit(event) {
+    async function submitPhotoPostForm(event) {
         event.preventDefault();
 
         if (name.validate() && weight.validate() && age.validate() && Object.keys(img).length > 0) {
@@ -60,7 +60,7 @@ const UserPhotoPost = () => {
         <section className={`${styles.photoPost} animeLeft`}>
             <Head title="Adicionar Foto" description="Adicionar novas fotos ao site." />
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={submitPhotoPostForm}>
                 {/* Name */}
                 <Input label="Nome" type="text"
                     id="name"

@@ -47,7 +47,7 @@ const PhotoCommentsForm = ({id, setPhotoComments, single}) => {
                 </div>
             </div>
 
-            {error && <Error error={error} />}
+            {error && <Error error={error && "Preencha o campo."} />}
         </form>
     )
 }

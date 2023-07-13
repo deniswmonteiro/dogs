@@ -15,7 +15,7 @@ const LoginForm = () => {
     const {userLogin, loading, error} = React.useContext(UserContext);
 
     /** When form is submited */
-    async function handleSubmit(event) {
+    async function submitLoginForm(event) {
         event.preventDefault();
 
         // Validate username and password before send form data
@@ -31,7 +31,7 @@ const LoginForm = () => {
             {/* Login */}
             <h1 className="title">Login</h1>
 
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={submitLoginForm}>
                 {/* Username */}
                 <Input label="Usuário" type="text"
                     id="username"
@@ -50,7 +50,7 @@ const LoginForm = () => {
                     )
                 }
 
-                {error && <Error error={error && "Dados incorretos."} />}
+                {error && <Error error={error && "Credenciais inválidas."} />}
             </form>
 
             <Link to="/login/perdeu" className={styles.lost}>

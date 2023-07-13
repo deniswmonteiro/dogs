@@ -11,8 +11,8 @@ const Photo = () => {
     const {id} = useParams();
     const {data, error, loading, request} = useFetch();
 
-    /** Show a single photo */
     React.useEffect(() => {
+        /** Get a single photo */
         async function getPhoto() {
             const {url, options} = PHOTO_GET(id);
 

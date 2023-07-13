@@ -33,7 +33,7 @@ const LoginPasswordReset = () => {
     }
 
     /** Send new password */
-    async function handleSubmit(event) {
+    async function submitPasswordResetForm(event) {
         event.preventDefault();
 
         if (password.validate()) {
@@ -55,7 +55,7 @@ const LoginPasswordReset = () => {
 
             <h1 className="title">Criar nova senha</h1>
             
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={submitPasswordResetForm}>
                 {/* Password */}
                 <Input label="Nova Senha" type="password"
                     id="password"

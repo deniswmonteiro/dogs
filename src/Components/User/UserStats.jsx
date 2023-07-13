@@ -11,8 +11,8 @@ const UserStatsGraphs = React.lazy(() => import("./UserStatsGraphs"));
 const UserStats = () => {
     const {data, error, loading, request} = useFetch();
 
-    /** Get stats data */
     React.useEffect(() => {
+        /** Get stats data */
         async function getData() {
             const token = window.localStorage.getItem("token");
 
@@ -34,6 +34,7 @@ const UserStats = () => {
         return (
             <React.Suspense fallback={<div></div>}>
                 <Head title="Estatísticas" description="Página de estatísticas de acessos às fotos." />
+                
                 <UserStatsGraphs data={data} />
             </React.Suspense>
         )

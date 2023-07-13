@@ -21,7 +21,7 @@ const LoginPasswordLost = () => {
     }
 
     /** Send URL with key to reset the password */
-    async function handleSubmit(event) {
+    async function submitPasswordLostForm(event) {
         event.preventDefault();
 
         if (login.validate()) {
@@ -51,7 +51,7 @@ const LoginPasswordLost = () => {
                         </Button>
                     </>
                 ) : (
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={submitPasswordLostForm}>
                         {/* Email/Username */}
                         <Input label="Email/Usuário" type="text"
                             id="login"

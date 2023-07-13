@@ -6,13 +6,13 @@ import styles from "./FeedPhotosItem.module.css";
 const FeedPhotosItem = ({photo, setModalPhoto}) => {
     const [photoViews, setPhotoViews] = React.useState(() => photo.views);
 
-    function handleClick() {
+    function showModalPhoto() {
         setModalPhoto(photo);
         setPhotoViews(Number(photoViews) + 1);
     }
     
     return (
-        <li className={styles.photo} onClick={handleClick}>
+        <li className={styles.photo} onClick={showModalPhoto}>
             <Image src={photo.src} alt={photo.title} />
             
             <span className={styles.views}>

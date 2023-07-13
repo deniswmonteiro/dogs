@@ -47,6 +47,7 @@ export const UserStorage = ({children}) => {
 
         catch (e) {
             setError(e.message);
+            setTimeout(() => setError(null), 5000);
             setLogin(false);
         }
 

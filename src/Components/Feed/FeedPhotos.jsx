@@ -11,8 +11,8 @@ const FeedPhotos = ({page, user, setInfinite, setModalPhoto}) => {
     const {data, loading, error, request} = useFetch();
     const [hasPages, setHasPages] = React.useState(true);
 
-    /** Get all photos */
     React.useEffect(() => {
+        /** Get all photos */
         async function fetchPhotos() {
             const total = 6;
             const {url, options} = PHOTOS_GET({

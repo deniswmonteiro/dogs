@@ -4,6 +4,7 @@ const useMedia = (media) => {
     const [match, setMatch] = React.useState(null);
 
     React.useEffect(() => {
+        /** Get window size on resize */
         function changeMatch() {
             const {matches} = window.matchMedia(media);
 

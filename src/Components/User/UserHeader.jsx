@@ -7,8 +7,8 @@ const UserHeader = () => {
     const [title, setTitle] = React.useState("");
     const location = useLocation();
 
-    /** Change page title according with URL */
     React.useEffect(() => {
+        /** Change page title according with URL */
         const {pathname} = location;
 
         switch (pathname) {
@@ -22,6 +22,7 @@ const UserHeader = () => {
             
             default:
                 setTitle("Minhas Fotos");
+                break;
         }
     }, [location]);
 

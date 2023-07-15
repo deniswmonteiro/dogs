@@ -42,9 +42,9 @@ const UserPhotoPost = () => {
             const formData = new FormData();
             
             formData.append("img", img.raw);
-            formData.append("name", name.value);
-            formData.append("weight", weight.value);
-            formData.append("age", age.value);
+            formData.append("nome", name.value);
+            formData.append("peso", weight.value);
+            formData.append("idade", age.value);
 
             const token = window.localStorage.getItem("token");
 

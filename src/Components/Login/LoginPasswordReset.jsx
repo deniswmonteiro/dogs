@@ -11,7 +11,7 @@ import Error from "../Helper/Error";
 const LoginPasswordReset = () => {
     const [login, setLogin] = React.useState("");
     const [key, setKey] = React.useState("");
-    const password = useForm("password");
+    const password = useForm();
     const {loading, error, request} = useFetch();
     const navigate = useNavigate();
 

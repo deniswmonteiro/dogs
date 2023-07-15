@@ -10,9 +10,9 @@ import Button from "../Forms/Button";
 import Error from "../Helper/Error";
 
 const LoginCreate = () => {
-    const username = useForm("username");
+    const username = useForm();
     const email = useForm("email");
-    const password = useForm("password");
+    const password = useForm();
     const {userLogin} = React.useContext(UserContext);
     const {loading, error, request} = useFetch();
     const navigate = useNavigate();

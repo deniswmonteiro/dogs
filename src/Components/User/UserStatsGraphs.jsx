@@ -12,16 +12,16 @@ const UserStatsGraphs = ({data}) => {
         const graphData = data.map((item) => {
             return {
                 x: item.title,
-                y: Number(item.views)
+                y: Number(item.acessos)
             }
-        })
+        });
 
         setGraph(graphData);
 
         /** Sum total views */
         setTotal(
-            data.map(({views}) => Number(views))
-            .reduce((acc, curr) => acc + curr, 0)
+            data.map(({acessos}) => Number(acessos))
+                .reduce((acc, curr) => acc + curr, 0)
         );
     }, [data]);
 

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styles from "./FeedPhotosItem.module.css";
 
 const FeedPhotosItem = ({photo, setModalPhoto}) => {
-    const [photoViews, setPhotoViews] = React.useState(() => photo.views);
+    const [photoViews, setPhotoViews] = React.useState(() => photo.acessos);
 
     function showModalPhoto() {
         setModalPhoto(photo);

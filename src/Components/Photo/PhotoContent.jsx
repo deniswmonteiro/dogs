@@ -39,8 +39,8 @@ const PhotoContent = ({data, single, setModalPhoto}) => {
                                 )
                             }
                             
-                            <span className={styles.views}>
-                                {photo.views}
+                            <span className={styles.acessos}>
+                                {photo.acessos}
                             </span>
                         </p>
 
@@ -52,10 +52,10 @@ const PhotoContent = ({data, single, setModalPhoto}) => {
 
                         <ul className={styles.attributes}>
                             <li>
-                                {photo.weight} kg
+                                {photo.peso} kg
                             </li>
                             <li>
-                                {photo.age === 1 ? `${photo.age} ano` : `${photo.age} anos`}
+                                {photo.idade === 1 ? `${photo.idade} ano` : `${photo.idade} anos`}
                             </li>
                         </ul>
                     </div>
